@@ -4,14 +4,14 @@ import java.util.*;
 
 public class playArray {
 
-	private static int getRandomNumberInRange() {
+	private static int getRandomNumberInRange(int min, int max) {
 		Random r = new Random();
-		return r.nextInt((7) + 1);
+		return r.nextInt((max - min) + 1) + min;
 	}
 	
 	public static String getRandomColor() {
 		String[] pickColorArray = colorPrint.getColorArray();
-		int indexColorArray = getRandomNumberInRange();
+		int indexColorArray = getRandomNumberInRange(0, 7);
 		return(pickColorArray[indexColorArray]);
 	}
 	
@@ -27,5 +27,18 @@ public class playArray {
 			}
 		}
 		return(setBoard);
+	}
+	
+	public static Coordinate[] createSolution(int userNumberPoint) {
+		Coordinate[] solutionCoordinate = new Coordinate[userNumberPoint];
+		int bufferIndex = 0;
+		int bufferRandom = 0;
+		for(int indexLine = 0; indexLine < userNumberPoint; indexLine++) {
+			bufferRandom = getRandomNumberInRange(0,3);
+			System.out.print(bufferIndex);
+			solutionCoordinate[bufferIndex] = new Coordinate(indexLine, bufferRandom);
+			bufferIndex++;
+		}
+		return(solutionCoordinate);
 	}
 }
