@@ -1,6 +1,6 @@
 package Mastermind;
 
-public class colorPrint {
+public class ColorPrint {
 	
 	private static final String ANSI_RESET = "\u001B[0m";
 	private static final String ANSI_BLACK = "\u001B[30m";

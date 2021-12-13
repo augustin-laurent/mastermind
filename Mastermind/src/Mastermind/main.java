@@ -7,11 +7,11 @@ public class main {
 		//int choice = 0
 		//choice = textUser.askUser();
 		//playArray.getRandomColor()
-		String[][] playBoard = playArray.createArray(5);
-		playArray.initializeArray(playBoard);
-		textUser.printArray(playBoard);
-		colorPosition[] a;
-		a = playArray.createSolution(5, playBoard);
+		String[][] playBoard = PlayArray.createArray(5);
+		PlayArray.initializeArray(playBoard);
+		TextUser.printArray(playBoard);
+		ColorPosition[] a;
+		a = PlayArray.createSolution(5, playBoard);
 		
 		System.out.println('\n' + "---------");
 		System.out.println(a[0]);

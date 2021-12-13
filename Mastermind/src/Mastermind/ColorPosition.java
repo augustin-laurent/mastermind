@@ -1,14 +1,14 @@
 package Mastermind;
 
-public class colorPosition {
+public class ColorPosition {
 	// Parameters
 	private int positionOnCol;
 	private String colorOnPoint;
 	
 	//Constructor
-	public colorPosition() {}
+	public ColorPosition() {}
 	
-	public colorPosition(int positionOnCol, String colorOnPoint) {
+	public ColorPosition(int positionOnCol, String colorOnPoint) {
 		this.positionOnCol = positionOnCol;
 		this.colorOnPoint = colorOnPoint;
 	}

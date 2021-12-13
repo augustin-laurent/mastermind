@@ -2,7 +2,7 @@ package Mastermind;
 
 import java.util.*;
 
-public class playArray {
+public class PlayArray {
 	
 	private static int getRandomNumberInRange(int min, int max) {
 		Random r = new Random();
@@ -10,7 +10,7 @@ public class playArray {
 	}
 	
 	public static String getRandomColor() {
-		String[] pickColorArray = colorPrint.getColorArray();
+		String[] pickColorArray = ColorPrint.getColorArray();
 		int indexColorArray = getRandomNumberInRange(0, 7);
 		return(pickColorArray[indexColorArray]);
 	}
@@ -23,17 +23,17 @@ public class playArray {
 	public static void initializeArray(String[][] setBoard) {
 		for(int indexLine = 0; indexLine < setBoard.length; indexLine++) {
 			for(int indexCol = 0; indexCol < setBoard[indexLine].length; indexCol++) {
-				setBoard[indexLine][indexCol] = getRandomColor() + "*" + colorPrint.getAnsiReset();
+				setBoard[indexLine][indexCol] = getRandomColor() + "*" + ColorPrint.getAnsiReset();
 			}
 		}
 	}
 	
-	public static colorPosition[] createSolution(int userNumberPoint, String[][] playBoard) {
-		colorPosition[] solutionCoordinate = new colorPosition[userNumberPoint];
+	public static ColorPosition[] createSolution(int userNumberPoint, String[][] playBoard) {
+		ColorPosition[] solutionCoordinate = new ColorPosition[userNumberPoint];
 		int bufferRandom = 0;
 		for(int indexLine = 0; indexLine < playBoard.length; indexLine++) {
 			bufferRandom = getRandomNumberInRange(0,3);
-			solutionCoordinate[indexLine] = new colorPosition(bufferRandom, playBoard[indexLine][bufferRandom]);
+			solutionCoordinate[indexLine] = new ColorPosition(bufferRandom, playBoard[indexLine][bufferRandom]);
 		}
 		return(solutionCoordinate);
 	}
