@@ -12,6 +12,8 @@ public class main {
 		textUser.printArray(playBoard);
 		colorPosition[] a;
 		a = playArray.createSolution(5, playBoard);
+		
+		System.out.println('\n' + "---------");
 		System.out.println(a[0]);
 		System.out.println(a[1]);
 		System.out.println(a[2]);

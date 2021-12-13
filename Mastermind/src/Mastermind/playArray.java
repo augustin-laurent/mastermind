@@ -31,7 +31,7 @@ public class playArray {
 	public static colorPosition[] createSolution(int userNumberPoint, String[][] playBoard) {
 		colorPosition[] solutionCoordinate = new colorPosition[userNumberPoint];
 		int bufferRandom = 0;
-		for(int indexLine = 0; indexLine < playBoard[0].length; indexLine++) {
+		for(int indexLine = 0; indexLine < playBoard.length; indexLine++) {
 			bufferRandom = getRandomNumberInRange(0,3);
 			solutionCoordinate[indexLine] = new colorPosition(bufferRandom, playBoard[indexLine][bufferRandom]);
 		}
