@@ -30,4 +30,13 @@ public class textUser {
 		scanner.close();
 		return(pointToGuess);
 	}
+	
+	public static void printArray(String[][] gameBoard) {
+		for(int indexLine = 0; indexLine < gameBoard.length; indexLine++) {
+			System.out.print('\n');
+			for(int indexCol = 0; indexCol < gameBoard[indexLine].length; indexCol++) {
+				System.out.print(gameBoard[indexLine][indexCol]);
+			}
+		}
+	}
 }

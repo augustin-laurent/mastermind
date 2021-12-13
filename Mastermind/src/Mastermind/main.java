@@ -4,11 +4,14 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//int choice = 0;
+		//int choice = 0
 		//choice = textUser.askUser();
-		//playArray.getRandomColor();
-		Coordinate[] a;
-		a = playArray.createSolution(5);
+		//playArray.getRandomColor()
+		String[][] playBoard = playArray.createArray(5);
+		playArray.initializeArray(playBoard);
+		textUser.printArray(playBoard);
+		colorPosition[] a;
+		a = playArray.createSolution(5, playBoard);
 		System.out.println(a[0]);
 		System.out.println(a[1]);
 		System.out.println(a[2]);
