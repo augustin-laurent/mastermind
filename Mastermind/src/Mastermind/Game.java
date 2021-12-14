@@ -3,7 +3,7 @@ package Mastermind;
 public class Game {
 	private static String[][] playBoard;
 	private static ColorPosition[] solution;
-	private static ColorPosition[] userAttemptSolution;
+	private static ColorPosition[] userAttemptSolution = new ColorPosition[900];
 	private static int toGuess;
 	private static int attempt;
 	
@@ -20,8 +20,8 @@ public class Game {
 			for(int nbToRead = 0; nbToRead < toGuess; nbToRead++) {
 				userAttemptSolution[nbToRead] = TextUser.readUserInput();
 			}
-			if(PlayArray.getNbOfTrue() > 0) {
-				System.out.println("You placed " + PlayArray.getNbOfTrue() + " point and choose color in the right way, but this is not the right answer, try again !");
+			if(PlayArray.getTrueAttempt() > 0) {
+				System.out.println("You placed " + PlayArray.getTrueAttempt() + " point and choose color in the right way, but this is not the right answer, try again !");
 			}
 			else {
 				System.out.println("Nothing is correct, placement nor color, try again!");

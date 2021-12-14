@@ -4,13 +4,11 @@ import java.util.*;
 
 public class PlayArray {
 	
-	private static int nbOfTrue;
+	private static int trueAttempt;
 	
-	
-	
-	public static int getNbOfTrue() { return nbOfTrue; }
+	public static int getTrueAttempt() { return trueAttempt; }
 
-	public static void setNbOfTrue(int nbOfTrue) { PlayArray.nbOfTrue = nbOfTrue; }
+	public static void setTrueAttempt(int nbOfTrue) { PlayArray.trueAttempt = nbOfTrue; }
 
 	private static int getRandomNumberInRange(int min, int max) {
 		Random r = new Random();
@@ -42,28 +40,28 @@ public class PlayArray {
 		String color = null;
 		for(int indexRow = 0; indexRow < playBoard.length; indexRow++) {
 			bufferRandom = getRandomNumberInRange(0,3);
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiBlack())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiBlack())) {
 				color = ColorPrint.getAnsiBlack();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiBlue())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiBlue())) {
 				color = ColorPrint.getAnsiBlue();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiCyan())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiCyan())) {
 				color = ColorPrint.getAnsiCyan();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiGreen())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiGreen())) {
 				color = ColorPrint.getAnsiGreen();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiPurple())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiPurple())) {
 				color = ColorPrint.getAnsiPurple();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiRed())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiRed())) {
 				color = ColorPrint.getAnsiRed();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiWhite())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiWhite())) {
 				color = ColorPrint.getAnsiWhite();
 			}
-			if(playBoard[bufferRandom][indexRow].contains(ColorPrint.getAnsiYellow())) {
+			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiYellow())) {
 				color = ColorPrint.getAnsiYellow();
 			}
 			solutionCoordinate[indexRow] = new ColorPosition(bufferRandom, color);
@@ -72,16 +70,18 @@ public class PlayArray {
 	}
 	
 	public static boolean rightAnswer(ColorPosition[] solution, ColorPosition[] answer) {
-		nbOfTrue = 0;
+		int nbOfTrue = 0;
 		for(int index=0; index < solution.length; index++) {
 			if((solution[0].getPositionOnCol() == answer[0].getPositionOnCol()) && (solution[0].getColorOnPoint() == answer[0].getColorOnPoint())) {
 				nbOfTrue++;
 			}
 		}
 		if(nbOfTrue == solution.length) {
+			setTrueAttempt(nbOfTrue);
 			return(true);
 		}
 		else {
+			setTrueAttempt(nbOfTrue);
 			return(false);
 		}
 	}
