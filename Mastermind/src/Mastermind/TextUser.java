@@ -4,6 +4,9 @@ package Mastermind;
 import java.util.Scanner;
 
 public class TextUser {
+	
+	private static Scanner scanner = new Scanner(System.in);
+	
 	/**
 	 * @author Augustin LAURENT	
 	 * @author Rémi GARCIA
@@ -14,29 +17,27 @@ public class TextUser {
 	 * is lower or higher it will loop until the user enter a proper input and print a message on why the input is invalid.</p>
 	 */
 	public static int askUser() {
-		Scanner scanner = new Scanner(System.in);
 		int pointToGuess = 0;
-		System.out.println("Please pick the number of point you want to guess (Between 4 and 8)");
+		System.out.println(ColorPrint.getAnsiReset() + "Please pick the number of point you want to guess (Between 4 and 8)");
 		pointToGuess = scanner.nextInt();
 		if(pointToGuess < 4 || pointToGuess > 8) {
 			do {
-				System.out.println("Your last input was " + pointToGuess + " ,please enter a number of point to guess between 4 and 8");
+				System.out.println(ColorPrint.getAnsiReset() + "Your last input was " + pointToGuess + " ,please enter a number of point to guess between 4 and 8");
 				pointToGuess = scanner.nextInt();
 			}while(pointToGuess < 4 || pointToGuess > 8);
 		}
 		else {
-			System.out.println("You picked " + pointToGuess + " ,good luck !");
+			System.out.println(ColorPrint.getAnsiReset() + "You picked " + pointToGuess + " ,good luck !");
 		}
-		scanner.close();
 		return(pointToGuess);
 	}
 	
 	public static void printArray(String[][] gameBoard) {
-		for(int indexLine = 0; indexLine < gameBoard.length; indexLine++) {
-			System.out.print('\n');
-			for(int indexCol = 0; indexCol < gameBoard[indexLine].length; indexCol++) {
-				System.out.print(gameBoard[indexLine][indexCol]);
+		for(int indexRow = 0; indexRow < gameBoard.length; indexRow++) {
+			for(int indexCol = 0; indexCol < gameBoard[indexRow].length; indexCol++) {
+				System.out.print(gameBoard[indexRow][indexCol]);
 			}
+			System.out.print('\n');
 		}
 	}
 	
@@ -65,41 +66,49 @@ public class TextUser {
 	}
 	
 	public static ColorPosition readUserInput() {
-		ColorPosition userInput = null;
-		int bufferInputPosition = 0;
+		ColorPosition userInput = new ColorPosition(0, "");
+		int bufferInputPosition;
 		String bufferInputColor = null;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter the position of the point (Between 1 and 4)");
+		System.out.println(ColorPrint.getAnsiReset() + "Enter the position of the point (Between 1 and 4)");
 		// 1 will be treated as 0 in the Algorithm, we use the normal scale to make it more comfortable for the user
 		bufferInputPosition = scanner.nextInt();
 		if(bufferInputPosition < 1 || bufferInputPosition > 4) {
 			do {
-				System.out.println("You enter " + bufferInputPosition + " Which is not between 1 and 4, please renter a position between 1 and 4");
+				System.out.println(ColorPrint.getAnsiReset() + "You enter " + bufferInputPosition + " Which is not between 1 and 4, please renter a position between 1 and 4");
 				bufferInputPosition = scanner.nextInt();
 			}while(bufferInputPosition < 1 || bufferInputPosition > 4);
 		}
-		userInput.setPositionOnCol(bufferInputPosition);
-		System.out.println("Now enter the color of the point you previously choose (Black - Red - Green - Yellow - Blue - Purple - Cyan - White)");
-		bufferInputColor = scanner.next();
-		bufferInputColor.toLowerCase();
+		userInput.setPositionOnCol(bufferInputPosition-1);
+		System.out.println(ColorPrint.getAnsiReset() + "Now enter the color of the point you previously choose (Black - Red - Green - Yellow - Blue - Purple - Cyan - White)");
+		bufferInputColor = scanner.nextLine();
+		//bufferInputColor.toLowerCase();
+		System.out.println(bufferInputColor);
 		if(bufferInputColor != "black" || bufferInputColor != "red" || bufferInputColor != "green" || bufferInputColor != "yellow" || bufferInputColor != "blue" || bufferInputColor != "purple" || bufferInputColor != "cyan" || bufferInputColor != "white") {
 			do {
-				System.out.println("You did not enter one of the color or misstyped it here is the color avaible : ");
-				System.out.println('\t' + "- Black");
-				System.out.println('\t' + "- Red");
-				System.out.println('\t' + "- Green");
-				System.out.println('\t' + "- Yellow");
-				System.out.println('\t' + "- Blue");
-				System.out.println('\t' + "- Purple");
-				System.out.println('\t' + "- Cyan");
-				System.out.println('\t' + "- White");
-				bufferInputColor = scanner.next();
-				bufferInputColor.toLowerCase();
+				System.out.println(ColorPrint.getAnsiReset() + "You did not enter one of the color or misstyped it here is the color avaible : " + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiBlack() + '\t' + "- Black" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiRed() + '\t' + "- Red" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiGreen() + '\t' + "- Green" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiYellow() + '\t' + "- Yellow" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiBlue() + '\t' + "- Blue" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiPurple() + '\t' + "- Purple" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiCyan() + '\t' + "- Cyan" + ColorPrint.getAnsiReset());
+				System.out.println(ColorPrint.getAnsiWhite() + '\t' + "- White" + ColorPrint.getAnsiReset());
+				bufferInputColor = scanner.nextLine();
+				//bufferInputColor.toLowerCase();
+				System.out.println(bufferInputColor);
 			}while(bufferInputColor != "black" || bufferInputColor != "red" || bufferInputColor != "green" || bufferInputColor != "yellow" || bufferInputColor != "blue" || bufferInputColor != "purple" || bufferInputColor != "cyan" || bufferInputColor != "white");
 		}
 		bufferInputColor = convertInputColorToANSI(bufferInputColor);
+		System.out.println(bufferInputColor);
 		userInput.setColorOnPoint(bufferInputColor);	
 		scanner.close();
 		return(userInput);
+	}
+	
+	public static void cheatVisualizationSolution(ColorPosition[] solution) {
+		for(int index = 0; index < solution.length; index++) {
+			System.out.println(solution[index]);
+		}
 	}
 }
