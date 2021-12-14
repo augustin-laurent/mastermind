@@ -37,4 +37,19 @@ public class PlayArray {
 		}
 		return(solutionCoordinate);
 	}
+	
+	public static boolean rightAnswer(ColorPosition[] solution, ColorPosition[] answer) {
+		int nbOfTrue = 0;
+		for(int index=0; index < solution.length; index++) {
+			if((solution[0].getPositionOnCol() == answer[0].getPositionOnCol()) && (solution[0].getColorOnPoint() == answer[0].getColorOnPoint())) {
+				nbOfTrue++;
+			}
+		}
+		if(nbOfTrue == solution.length) {
+			return(true);
+		}
+		else {
+			return(false);
+		}
+	}
 }
