@@ -40,6 +40,30 @@ public class TextUser {
 		}
 	}
 	
+	public static String convertInputColorToANSI(String inputColor) {
+		switch(inputColor) {
+			case "black":
+				return(ColorPrint.getAnsiBlack());
+			case "red":
+				return(ColorPrint.getAnsiRed());
+			case "green":
+				return(ColorPrint.getAnsiGreen());
+			case "yellow":
+				return(ColorPrint.getAnsiYellow());
+			case "blue":
+				return(ColorPrint.getAnsiBlue());
+			case "purple":
+				return(ColorPrint.getAnsiPurple());
+			case "cyan":
+				return(ColorPrint.getAnsiCyan());
+			case "white":
+				return(ColorPrint.getAnsiWhite());
+			default:
+				break;
+		}
+		return (null);
+	}
+	
 	public static ColorPosition readUserInput() {
 		ColorPosition userInput = null;
 		int bufferInputPosition = 0;
@@ -73,7 +97,8 @@ public class TextUser {
 				bufferInputColor.toLowerCase();
 			}while(bufferInputColor != "black" || bufferInputColor != "red" || bufferInputColor != "green" || bufferInputColor != "yellow" || bufferInputColor != "blue" || bufferInputColor != "purple" || bufferInputColor != "cyan" || bufferInputColor != "white");
 		}
-		userInput.setColorOnPoint(bufferInputColor);
+		bufferInputColor = convertInputColorToANSI(bufferInputColor);
+		userInput.setColorOnPoint(bufferInputColor);	
 		scanner.close();
 		return(userInput);
 	}
