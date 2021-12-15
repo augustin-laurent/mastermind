@@ -107,19 +107,8 @@ public class TextUser {
 	}
 	
 	public static ColorPosition readUserInput() {
-		ColorPosition userInput = new ColorPosition(0, "");
-		int bufferInputPosition;
-		int bufferInputColor;
-		System.out.println(ColorPrint.getAnsiReset() + "Enter the position of the point (Between 1 and 4)");
+		ColorPosition userInput = new ColorPosition("");
 		// 1 will be treated as 0 in the Algorithm, we use the normal scale to make it more comfortable for the user
-		bufferInputPosition = scanner.nextInt();
-		if(bufferInputPosition < 1 || bufferInputPosition > 4) {
-			do {
-				System.out.println(ColorPrint.getAnsiReset() + "You enter " + bufferInputPosition + " Which is not between 1 and 4, please renter a position between 1 and 4");
-				bufferInputPosition = scanner.nextInt();
-			}while(bufferInputPosition < 1 || bufferInputPosition > 4);
-		}
-		userInput.setPositionOnCol(bufferInputPosition-1);
 		//System.out.println(ColorPrint.getAnsiReset() + "Now enter the color of the point you previously choose (Black - Red - Green - Yellow - Blue - Purple - Cyan - White)");
 		//bufferInputColor = scanner.nextLine();
 		//bufferInputColor.toLowerCase();
