@@ -6,7 +6,8 @@ public class main {
 		//int choice = 0
 		//choice = textUser.askUser();
 		//playArray.getRandomColor()
-		Game.core();	
+		//Game.core();
+		Game.aiCore();
 	}
 
 }

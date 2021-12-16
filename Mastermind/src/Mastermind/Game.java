@@ -2,12 +2,17 @@ package Mastermind;
 
 public class Game {
 	private static String[][] playBoard;
-	private static ColorPosition[] solution;
-	private static ColorPosition[] userAttemptSolution = new ColorPosition[900];
+	private static String[] solution;
+	private static String[] userAttemptSolution = new String[900];
 	private static int toGuess;
 	private static int attempt;
 	
+	public static void aiCore() {
+		ArtificialIntelligence.smartWay();
+	}
+	
 	public static void core() {
+		int[] trueAttempt;
 		System.out.println("MASTERMIND");
 		attempt = 0;
 		toGuess = TextUser.askUser();
@@ -20,14 +25,17 @@ public class Game {
 			for(int nbToRead = 0; nbToRead < toGuess; nbToRead++) {
 				userAttemptSolution[nbToRead] = TextUser.readUserInput();
 			}
-			if(PlayArray.getTrueAttempt() > 0) {
-				System.out.println("You placed " + PlayArray.getTrueAttempt() + " point and choose color in the right way, but this is not the right answer, try again !");
+			trueAttempt = PlayArray.rightAnswer(solution, userAttemptSolution);
+			if(trueAttempt[0] > 0 && trueAttempt[1] != 1) {
+				System.out.println("You choose " + trueAttempt[0] + " color correct, but this is not the right answer, try again !");
 			}
 			else {
-				System.out.println("Nothing is correct, placement nor color, try again!");
+				if(trueAttempt[1] != 1) {
+					System.out.println("Nothing is correct, placement nor color, try again!");
+				}
 			}
 			attempt++;
-		}while(PlayArray.rightAnswer(solution, userAttemptSolution) != true);
+		}while(trueAttempt[1] != 1);
 		System.out.println("You managed to win the game with a total attempt of " + attempt + " , Congratulations!");
 		
 	}

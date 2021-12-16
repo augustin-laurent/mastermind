@@ -106,37 +106,15 @@ public class TextUser {
 		}
 	}
 	
-	public static ColorPosition readUserInput() {
-		ColorPosition userInput = new ColorPosition("");
-		// 1 will be treated as 0 in the Algorithm, we use the normal scale to make it more comfortable for the user
-		//System.out.println(ColorPrint.getAnsiReset() + "Now enter the color of the point you previously choose (Black - Red - Green - Yellow - Blue - Purple - Cyan - White)");
-		//bufferInputColor = scanner.nextLine();
-		//bufferInputColor.toLowerCase();
-		
-		/*
-		if(bufferInputColor != "black" || bufferInputColor != "red" || bufferInputColor != "green" || bufferInputColor != "yellow" || bufferInputColor != "blue" || bufferInputColor != "purple" || bufferInputColor != "cyan" || bufferInputColor != "white") {
-			do {
-				System.out.println(ColorPrint.getAnsiReset() + "You did not enter one of the color or misstyped it here is the color avaible : " + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiBlack() + '\t' + "- Black" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiRed() + '\t' + "- Red" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiGreen() + '\t' + "- Green" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiYellow() + '\t' + "- Yellow" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiBlue() + '\t' + "- Blue" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiPurple() + '\t' + "- Purple" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiCyan() + '\t' + "- Cyan" + ColorPrint.getAnsiReset());
-				System.out.println(ColorPrint.getAnsiWhite() + '\t' + "- White" + ColorPrint.getAnsiReset());
-				bufferInputColor = scanner.nextLine();
-				//bufferInputColor.toLowerCase();
-				System.out.println(bufferInputColor);
-			}while(bufferInputColor != "black" || bufferInputColor != "red" || bufferInputColor != "green" || bufferInputColor != "yellow" || bufferInputColor != "blue" || bufferInputColor != "purple" || bufferInputColor != "cyan" || bufferInputColor != "white");
-		}*/
-		userInput.setColorOnPoint(convertInputColorToANSI(readColorPick()));	
+	public static String readUserInput() {
+		String userInput = "";
+		userInput = convertInputColorToANSI(readColorPick());	
 		return(userInput);
 	}
 	
-	public static void cheatVisualizationSolution(ColorPosition[] solution) {
+	public static void cheatVisualizationSolution(String[] solution) {
 		for(int index = 0; index < solution.length; index++) {
-			System.out.println(solution[index]);
+			System.out.println(solution[index] + "*" + ColorPrint.getAnsiReset());
 		}
 	}
 }

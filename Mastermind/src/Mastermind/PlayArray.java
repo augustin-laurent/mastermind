@@ -3,13 +3,6 @@ package Mastermind;
 import java.util.*;
 
 public class PlayArray {
-	
-	private static int trueAttempt;
-	
-	public static int getTrueAttempt() { return trueAttempt; }
-
-	public static void setTrueAttempt(int nbOfTrue) { PlayArray.trueAttempt = nbOfTrue; }
-
 	private static int getRandomNumberInRange(int min, int max) {
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
@@ -34,8 +27,8 @@ public class PlayArray {
 		}
 	}
 	
-	public static ColorPosition[] createSolution(int userNumberPoint, String[][] playBoard) {
-		ColorPosition[] solutionCoordinate = new ColorPosition[userNumberPoint];
+	public static String[] createSolution(int userNumberPoint, String[][] playBoard) {
+		String[] solutionCoordinate = new String[userNumberPoint];
 		int bufferRandom = 0;
 		String color = null;
 		for(int indexRow = 0; indexRow < playBoard.length; indexRow++) {
@@ -64,25 +57,38 @@ public class PlayArray {
 			if(playBoard[indexRow][bufferRandom].contains(ColorPrint.getAnsiYellow())) {
 				color = ColorPrint.getAnsiYellow();
 			}
-			solutionCoordinate[indexRow] = new ColorPosition(color);
+			solutionCoordinate[indexRow] = color;
 		}
 		return(solutionCoordinate);
 	}
+
+	public static int presenceOfColor(String[] solution, String color) {
+		int timeAppear = 0;
+		for(int index=0; index < solution.length; index++) {
+			if(solution[index] == color) {
+				timeAppear++;
+			}
+		}
+		return(timeAppear);
+	}
 	
-	public static boolean rightAnswer(ColorPosition[] solution, ColorPosition[] answer) {
+	public static int[] rightAnswer(String[] solution, String[] answer) {
+		int[] toBeReturned = new int[2];
 		int nbOfTrue = 0;
 		for(int index=0; index < solution.length; index++) {
-			if((solution[0].getColorOnPoint() == answer[0].getColorOnPoint())) {
+			if((solution[index] == answer[index])) {
 				nbOfTrue++;
 			}
 		}
 		if(nbOfTrue == solution.length) {
-			setTrueAttempt(nbOfTrue);
-			return(true);
+			toBeReturned[0] = nbOfTrue;
+			toBeReturned[1] = 1;
+			return(toBeReturned);
 		}
 		else {
-			setTrueAttempt(nbOfTrue);
-			return(false);
+			toBeReturned[0] = nbOfTrue;
+			toBeReturned[1] = 0;
+			return(toBeReturned);
 		}
 	}
 }
