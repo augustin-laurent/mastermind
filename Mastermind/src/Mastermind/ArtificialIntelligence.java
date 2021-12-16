@@ -39,7 +39,7 @@ public class ArtificialIntelligence {
 		System.out.println("-------------------------------------");
 		TextUser.cheatVisualizationSolution(aiAttempt);
 		
-		for(int index = 0; index < aiAttempt.length; index++) {
+		for(int index = aiAttempt.length; index > aiAttempt.length; index--) {
 			if(aiAttempt[index] != solution[index]) {
 				secondIndex = 1;
 				while(aiAttempt[index] != solution[index]) {
@@ -54,6 +54,8 @@ public class ArtificialIntelligence {
 				}
 			}	
 		}
+		System.out.println("-------------------------------------");
+		TextUser.cheatVisualizationSolution(aiAttempt);
 		System.out.println("gros fiak" + attemptNumber);
 	}
 }
