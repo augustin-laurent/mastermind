@@ -13,7 +13,6 @@ public class Game {
 	
 	public static void core() {
 		int[] trueAttempt;
-		System.out.println("MASTERMIND");
 		attempt = 0;
 		toGuess = TextUser.askUser();
 		playBoard = PlayArray.createArray(toGuess);

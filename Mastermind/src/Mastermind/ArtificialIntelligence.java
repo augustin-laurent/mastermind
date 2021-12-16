@@ -22,7 +22,6 @@ public class ArtificialIntelligence {
 		playBoard = PlayArray.createArray(4);
 		PlayArray.initializeArray(playBoard);
 		solution = PlayArray.createSolution(4, playBoard);
-		TextUser.cheatVisualizationSolution(solution);
 		do {
 			for(int index = presenceOfColor; index < aiAttempt.length; index++) {
 				aiAttempt[index] = colorArray[colorArrayIndex];
@@ -36,9 +35,6 @@ public class ArtificialIntelligence {
 			colorArrayIndex++;
 			attemptNumber++;
 		}while(presenceOfColor != aiAttempt.length && colorArrayIndex < colorArray.length && !Arrays.equals(solution, aiAttempt));
-		System.out.println("-------------------------------------");
-		TextUser.cheatVisualizationSolution(aiAttempt);
-		
 		for(int index = aiAttempt.length; index > aiAttempt.length; index--) {
 			if(aiAttempt[index] != solution[index]) {
 				secondIndex = 1;
@@ -54,8 +50,7 @@ public class ArtificialIntelligence {
 				}
 			}	
 		}
-		System.out.println("-------------------------------------");
-		TextUser.cheatVisualizationSolution(aiAttempt);
+		System.out.println("The computer finished the game in " + attemptNumber + " attempt");
 		System.out.println("gros fiak" + attemptNumber);
 	}
 }
