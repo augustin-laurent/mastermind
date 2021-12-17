@@ -32,7 +32,7 @@ public class main {
 		else if(choice == 2) {
 			Game.core();
 		}
-			
+		scanner.close();
 	}
 
 }

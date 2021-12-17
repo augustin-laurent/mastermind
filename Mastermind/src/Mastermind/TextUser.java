@@ -32,6 +32,15 @@ public class TextUser {
 		return(pointToGuess);
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This procedure print out the board
+	 * @since v1
+	 * @version v1
+	 * <p>This procedure take as an input a 2D String Array, and run through it by printing all the cell<br>
+	 *	When a loop is finished we get back to a new line to create a nice looking 4*(4 to 8) Matrix</p>
+	 */
 	public static void printArray(String[][] gameBoard) {
 		for(int indexRow = 0; indexRow < gameBoard.length; indexRow++) {
 			for(int indexCol = 0; indexCol < gameBoard[indexRow].length; indexCol++) {
@@ -41,6 +50,15 @@ public class TextUser {
 		}
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return a String containing an ANSI Coded color
+	 * @since v1
+	 * @version v1
+	 * <p> This function take as an input a String containing a literal color, the function return the corresponding<br>
+	 * code color.</p>
+	 */
 	public static String convertInputColorToANSI(String inputColor) {
 		switch(inputColor) {
 			case "black":
@@ -65,6 +83,14 @@ public class TextUser {
 		return (null);
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return a String containing an ANSI code color
+	 * @since v1
+	 * @version v1
+	 * <p>The function read an integer input and between 1 and 8, each number in this interval correspond to a color</p>
+	 */
 	public static String readColorPick() {
 		int bufferInputColor;
 		System.out.println("Choose the number assigned to the color :");
@@ -106,12 +132,29 @@ public class TextUser {
 		}
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return a String containing an ANSI code color
+	 * @since v1
+	 * @version v1
+	 * <p>The function call other functions to convert all previous value to the final ANSI Code color</p>
+	 */
 	public static String readUserInput() {
 		String userInput = "";
 		userInput = convertInputColorToANSI(readColorPick());	
 		return(userInput);
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This procedure print out the solution, it's only for developper !
+	 * @since v1
+	 * @version v1
+	 * <p>The function take as an input a string array containing the solution<br>
+	 * and print in the right order the point and the corresponding color in a column</p>
+	 */
 	public static void cheatVisualizationSolution(String[] solution) {
 		for(int index = 0; index < solution.length; index++) {
 			System.out.println(solution[index] + "*" + ColorPrint.getAnsiReset());
