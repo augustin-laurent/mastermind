@@ -10,10 +10,10 @@ public class ArtificialIntelligence {
 	private static int returnValue;
 	private static int colorArrayIndex;
 	private static int attemptNumber;
-	
-	
+
+
 	public static void smartWay() {
-		
+
 		int presenceOfColor = 0;
 		colorArrayIndex = 0;
 		attemptNumber = 0;
@@ -50,7 +50,47 @@ public class ArtificialIntelligence {
 				}
 			}	
 		}
+		TextUser.cheatVisualizationSolution(aiAttempt);
 		System.out.println("The computer finished the game in " + attemptNumber + " attempt");
-		System.out.println("gros fiak" + attemptNumber);
+	}
+
+
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @since v1
+	 * @version v1
+	 * <p>L'ordinateur va tenter de trouver la solution sans réfléchir en donnant des 
+	 * couleurs de pions aléatoire à chaque coup </p>
+	 */
+	public static void randomWay() {
+		
+		System.out.println("\n----------Random Way---------");
+
+		// on définit l'intervalle pour le chiffre aléatoire
+		int max = 7; //borne maximum
+		int min = 0; //borne minimum
+		int intervalle = max - min + 1;
+		int nbAleatoire = 0; //r
+
+
+		colorArrayIndex = 0;
+		attemptNumber = 0;
+		playBoard = PlayArray.createArray(4);
+		PlayArray.initializeArray(playBoard);
+		solution = PlayArray.createSolution(4, playBoard);
+		
+		do {
+			
+			for(int index = 0; index < aiAttempt.length; index++) {
+				nbAleatoire = (int)(Math.random() * intervalle) + min;
+				//nombre aléatoire qui sera l'indice pour le tableau des couleurs
+				aiAttempt[index] = colorArray[nbAleatoire];
+			}
+	
+			attemptNumber++;
+		}while(!Arrays.equals(solution, aiAttempt));
+		TextUser.cheatVisualizationSolution(aiAttempt);
+		System.out.println("The computer finished the game in " + attemptNumber + " attempt");
 	}
 }

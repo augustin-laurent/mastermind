@@ -1,6 +1,7 @@
 package Mastermind;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class main {
 
@@ -27,7 +28,15 @@ public class main {
 			startTimer = System.nanoTime();
 			Game.aiCore();
 			endTimer = System.nanoTime();
-			System.out.println("The computer passed exactly (in nanoSecond) : " + (endTimer - startTimer) + "nS to solve the solution on a 4*4 grid");
+			long time = TimeUnit.MILLISECONDS.convert((long) (endTimer - startTimer), TimeUnit.NANOSECONDS);
+			System.out.println("The computer passed exactly (in milliseconds) : " + (time) + "ms to solve the solution on a 4*4 grid");
+			
+			startTimer = System.nanoTime();
+			Game.aiCoreDumb();
+			endTimer = System.nanoTime();
+			long timeDumb = TimeUnit.MILLISECONDS.convert((long) (endTimer - startTimer), TimeUnit.NANOSECONDS);
+			System.out.println("The computer (random) passed exactly (in milliseconds) : " + (timeDumb) + "ms to solve the solution on a 4*4 grid");
+			
 		}
 		else if(choice == 2) {
 			Game.core();

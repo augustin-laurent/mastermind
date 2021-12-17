@@ -11,6 +11,10 @@ public class Game {
 		ArtificialIntelligence.smartWay();
 	}
 	
+	public static void aiCoreDumb() {
+		ArtificialIntelligence.randomWay();
+	}
+	
 	public static void core() {
 		int[] trueAttempt;
 		attempt = 0;
@@ -26,7 +30,8 @@ public class Game {
 			}
 			trueAttempt = PlayArray.rightAnswer(solution, userAttemptSolution);
 			if(trueAttempt[0] > 0 && trueAttempt[1] != 1) {
-				System.out.println("You choose " + trueAttempt[0] + " color correct, but this is not the right answer, try again !");
+				System.out.println("You choose " + trueAttempt[0] + " color correct and " +  (toGuess-trueAttempt[0]) + " not correct"
+						          + ", but this is not the right answer, try again !");
 			}
 			else {
 				if(trueAttempt[1] != 1) {
