@@ -3,17 +3,44 @@ package Mastermind;
 import java.util.*;
 
 public class PlayArray {
+	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return an integer between the minimal and maximal value given in parameter
+	 * @since v1
+	 * @version v1
+	 * <p>The function take as a parameter two number a minimal value and a maximal value<br>
+	 * the returned value is a random number between the min and the max </p>
+	 */
 	private static int getRandomNumberInRange(int min, int max) {
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return a random ANSI Code Color
+	 * @since v1
+	 * @version v1
+	 * <p>This function get a random number between 0 and 7 and take the corresponding ANSI Code Color<br>
+	 * in an array</p>
+	 */
 	public static String getRandomColor() {
 		String[] pickColorArray = ColorPrint.getColorArray();
 		int indexColorArray = getRandomNumberInRange(0, 7);
 		return(pickColorArray[indexColorArray]);
 	}
 	
+	/**
+	 * @author Augustin LAURENT	
+	 * @author Rémi GARCIA
+	 * @return This function return a String containing an ANSI code color
+	 * @since v1
+	 * @version v1
+	 * <p>The function read an integer input and between 1 and 8, each number in this interval correspond to a color</p>
+	 */
 	public static String[][] createArray(int numberLine) {
 		String[][] playBoard = new String[numberLine][4];
 		return(playBoard);

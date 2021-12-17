@@ -149,7 +149,7 @@ public class TextUser {
 	/**
 	 * @author Augustin LAURENT	
 	 * @author Rémi GARCIA
-	 * @return This procedure print out the solution, it's only for developper !
+	 * @return This procedure print out the solution, it's only for developer !
 	 * @since v1
 	 * @version v1
 	 * <p>The function take as an input a string array containing the solution<br>
